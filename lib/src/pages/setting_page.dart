@@ -10,7 +10,7 @@ class SettingPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(120),
+        preferredSize: Size.fromHeight(140),
         child: Container(
           decoration: BoxDecoration(
             color: HexColor('#5BB509'),
@@ -23,7 +23,9 @@ class SettingPage extends StatelessWidget {
                 SizedBox(height: 30,),
                 Row(
                   children: [
-                    Icon(Icons.arrow_back_ios,color: Colors.white,),
+                    IconButton(icon:Icon(Icons.arrow_back_ios,color: Colors.white),onPressed: (){
+                      Get.back();
+                    },),
                     KText(text: 'Setting',fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white,)
                   ],
                 ),
@@ -59,28 +61,40 @@ class SettingPage extends StatelessWidget {
                 Get.to(AccountPage());
               },
             leading: Image.asset('assets/Vector.png'),
-            title: KText(text: 'Account',color:HexColor('#5BB509'),fontSize: 18,fontWeight: FontWeight.bold,),
+            title: Padding(
+              padding:  EdgeInsets.only(bottom: 10.0),
+              child: KText(text: 'Account',color:HexColor('#5BB509'),fontSize: 18,fontWeight: FontWeight.bold,),
+            ),
             subtitle: KText(text: 'Privacy,Security'),
 
 
             ),
             ListTile(
             leading: Image.asset('assets/Vector1.png'),
-            title: KText(text: 'Chats',color:HexColor('#5BB509'),fontSize: 18,fontWeight: FontWeight.bold,),
+            title: Padding(
+              padding:  EdgeInsets.only(bottom: 10),
+              child: KText(text: 'Chats',color:HexColor('#5BB509'),fontSize: 18,fontWeight: FontWeight.bold,),
+            ),
             subtitle: KText(text: 'Chat history'),
 
 
             ),
             ListTile(
             leading: Image.asset('assets/Vector2.png'),
-            title: KText(text: 'Notifications',color:HexColor('#5BB509'),fontSize: 18,fontWeight: FontWeight.bold,),
+            title: Padding(
+              padding:  EdgeInsets.only(bottom: 10),
+              child: KText(text: 'Notifications',color:HexColor('#5BB509'),fontSize: 18,fontWeight: FontWeight.bold,),
+            ),
             subtitle: KText(text: 'Messeages,group'),
 
 
             ),
             ListTile(
             leading: Image.asset('assets/Vector3.png'),
-            title: KText(text: 'Help',color:HexColor('#5BB509'),fontSize: 18,fontWeight: FontWeight.bold,),
+            title: Padding(
+              padding:  EdgeInsets.only(bottom: 10),
+              child: KText(text: 'Help',color:HexColor('#5BB509'),fontSize: 18,fontWeight: FontWeight.bold,),
+            ),
             subtitle: KText(text: 'Help center, contact us, privacy policy'),
 
 

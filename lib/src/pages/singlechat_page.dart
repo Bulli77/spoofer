@@ -170,38 +170,66 @@ child: Container(
         ),
       ),
       SizedBox(height: 35,),
-    Padding(
-      padding:  EdgeInsets.symmetric(horizontal: 15),
-      child:Row(
-        children: [
-          CircleAvatar(
-            radius: 25,
-            backgroundImage: AssetImage(widget.user.imageUrl),
-          ),
-          SizedBox(width: 10,),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              KText(text: widget.user.name,color: Colors.white,fontSize: 15,),
-              KText(text: '+91445454655',color: Colors.white54,fontSize: 12,)
-            ],
-          ),
-           SizedBox(width: size.width*0.30,),
-        isSearching?IconButton(onPressed: (){
+    Row(
+      children: [
+        SizedBox(width: 17,),
+        CircleAvatar(
+          radius: 25,
+          backgroundImage: AssetImage(widget.user.imageUrl),
+        ),
+        SizedBox(width: 10,),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            KText(text: widget.user.name,color: Colors.white,fontSize: 15,),
+            KText(text: '+91445454655',color: Colors.white54,fontSize: 12,)
+          ],
+        ),
+         SizedBox(width: size.width*0.36,),
+      isSearching?IconButton(onPressed: (){
+        setState(() {
+          this.isSearching =!this.isSearching;
+        });
+      }, icon: Icon(Icons.close,color: Colors.white,)) : IconButton(onPressed: (){
           setState(() {
             this.isSearching =!this.isSearching;
           });
-        }, icon: Icon(Icons.close,color: Colors.white,)) : IconButton(onPressed: (){
-            setState(() {
-              this.isSearching =!this.isSearching;
-            });
-          }, icon: Icon(Icons.search,color: Colors.white,size: 30,)),
-          IconButton(onPressed: (){
-             openDialog();
-          }, icon: Icon(Icons.more_vert,color: Colors.white,size: 30,))
-        ],
+        }, icon: Icon(Icons.search,color: Colors.white,size: 30,)),
+    Theme (
+      data: Theme.of(context).copyWith(
+            cardColor: Colors.indigo,
+            iconTheme: IconThemeData(color: Colors.white),
       ),
-    )
+       child: ListTileTheme (
+         iconColor: Colors.white,
+          child: PopupMenuButton(
+            
+            color:HexColor('#5BB509'),
+            itemBuilder: (context)=>[
+            PopupMenuItem(
+              value: 0,
+              child: KText(text: 'Settings',color: Colors.white,)
+              ),
+            PopupMenuItem(
+              value: 1,
+              child: KText(text: 'New group',color: Colors.white,)
+              ),
+            PopupMenuItem(
+              value: 2,
+              child: KText(text: 'New broadcast',color: Colors.white,)
+              ),
+            PopupMenuItem(
+              value: 3,
+              child: KText(text: 'Starred messages',color: Colors.white,)
+              ),
+            
+          ],onSelected: (item)=>selectedItem(context, item),
+          
+          ),
+        ),
+     ),
+      ],
+    ),
     ],
   ),
 ),
@@ -265,24 +293,40 @@ child: Container(
       ),
     );
   }
-
-  Future openDialog()=> showDialog(
-    context: context,
-     builder: (context)=> Dialog(
-       insetPadding: EdgeInsets.symmetric(horizontal: 50),
-       backgroundColor: HexColor('#5BB509'),
-       child: Column(
-         crossAxisAlignment: CrossAxisAlignment.start,
-         mainAxisSize: MainAxisSize.min,
-         children: [
-           TextButton(onPressed: (){
-             Get.to(SettingPage());
-           }, child: KText(text: 'Settings',color: Colors.white,fontSize: 18,)),
-           TextButton(onPressed: (){}, child: KText(text: 'New Group',color: Colors.white,fontSize: 18,)),
-           TextButton(onPressed: (){}, child: KText(text: 'New broadcast',color: Colors.white,fontSize: 18,)),
-           TextButton(onPressed: (){}, child: KText(text: 'Starred messages ',color: Colors.white,fontSize: 18,)),
-         ],
-       ),
-     )
-     );
+  
+  selectedItem(BuildContext context, item){
+    switch (item) {
+      case 0: Get.to(SettingPage());
+        
+      break;
+      case 1: print('object');
+        
+      break;
+      case 2: print('object');
+        
+      break;
+      case 3: print('object');
+        
+      break;
+    }
+  }
+  // Future openDialog()=> showDialog(
+  //   context: context,
+  //    builder: (context)=> Dialog(
+  //      insetPadding: EdgeInsets.symmetric(horizontal: 50),
+  //      backgroundColor: HexColor('#5BB509'),
+  //      child: Column(
+  //        crossAxisAlignment: CrossAxisAlignment.start,
+  //        mainAxisSize: MainAxisSize.min,
+  //        children: [
+  //          TextButton(onPressed: (){
+  //            Get.to(SettingPage());
+  //          }, child: KText(text: 'Settings',color: Colors.white,fontSize: 18,)),
+  //          TextButton(onPressed: (){}, child: KText(text: 'New Group',color: Colors.white,fontSize: 18,)),
+  //          TextButton(onPressed: (){}, child: KText(text: 'New broadcast',color: Colors.white,fontSize: 18,)),
+  //          TextButton(onPressed: (){}, child: KText(text: 'Starred messages ',color: Colors.white,fontSize: 18,)),
+  //        ],
+  //      ),
+  //    )
+  //    );
 }

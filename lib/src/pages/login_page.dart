@@ -76,10 +76,10 @@ class LoginPage extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 icon: Icon(
-                  Icons.person,
+                  Icons.lock,
                   color: HexColor('#5BB509'),
                 ),
-                hintText: "Email/User Id",
+                hintText: "Password",
                 hintStyle: TextStyle(color: Colors.black54),
                 enabledBorder: InputBorder.none,
                 focusedBorder: InputBorder.none,

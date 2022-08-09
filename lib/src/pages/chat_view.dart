@@ -3,7 +3,6 @@ import 'package:chat_u/src/model/chat.dart';
 import 'package:chat_u/src/pages/singlechat_page.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -13,18 +12,9 @@ class ChatView extends StatelessWidget {
     final Size size = Get.size;
     return Scaffold(
       backgroundColor: Colors.white,
-    floatingActionButton: SpeedDial(
-    backgroundColor:HexColor('#5BB509'),
-    animatedIcon: AnimatedIcons.menu_close,
-    children: [
-      SpeedDialChild(
-        child: Icon(Icons.person_add,color: HexColor('#5BB509'),)
-      ),
-      SpeedDialChild(
-        child: Icon(Icons.question_answer,color: HexColor('#5BB509'),)
-      ),
-    ],
-    ),
+    floatingActionButton: FloatingActionButton(
+      backgroundColor: HexColor('#5BB509'),
+      onPressed: (){},child: Icon(Icons.person_add,color: Colors.white,),),
       body: ListView.builder(
         itemCount: chats.length,
         itemBuilder: (BuildContext context, int index) {

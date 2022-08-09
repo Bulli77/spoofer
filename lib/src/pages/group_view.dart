@@ -3,6 +3,7 @@ import 'package:chat_u/src/model/chat.dart';
 import 'package:chat_u/src/pages/groupchat_page.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -12,6 +13,21 @@ class GroupView extends StatelessWidget {
     final Size size = Get.size;
     return Scaffold(
       backgroundColor: Colors.white,
+       floatingActionButton: SpeedDial(
+    backgroundColor:HexColor('#5BB509'),
+    icon: Icons.add,
+    children: [
+      SpeedDialChild(
+        
+        backgroundColor: HexColor('#5BB509'),
+        child: Icon(Icons.close,color: Colors.white,),
+      ),
+      SpeedDialChild(
+       backgroundColor:HexColor('#5BB509'),
+        child: Icon(Icons.question_answer,color: Colors.white),
+      ),
+    ],
+    ),
     
       body: ListView.builder(
         itemCount: chats.length,
